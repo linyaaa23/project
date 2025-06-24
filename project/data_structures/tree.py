@@ -4,6 +4,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 class BinaryTree:
     def __init__(self):
         self.root = None
@@ -42,3 +43,14 @@ class BinaryTree:
         if node.data == data:
             return True
         return self.search(data, node.left) or self.search(data, node.right)
+
+    # 4. 获取所有类别
+    def get_all_categories(self):
+        categories = []
+        def traverse(node):
+            if node:
+                categories.append(node.data)
+                traverse(node.left)
+                traverse(node.right)
+        traverse(self.root)
+        return categories

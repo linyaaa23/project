@@ -3,6 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -18,16 +19,16 @@ class LinkedList:
             current = current.next
         current.next = new_node
 
-    # 2. 删除节点（按值删除）
-    def delete(self, data):
+    # 2. 删除节点（按 item_ID 删除）
+    def delete(self, item_id):
         if not self.head:
             return
         # 头节点匹配
-        if self.head.data == data:
+        if self.head.data['item_ID'] == item_id:
             self.head = self.head.next
             return
         current = self.head
-        while current.next and current.next.data != data:
+        while current.next and current.next.data['item_ID'] != item_id:
             current = current.next
         if current.next:
             current.next = current.next.next
@@ -40,11 +41,11 @@ class LinkedList:
             current = current.next
         print("None")
 
-    # 4. 查找节点
-    def search(self, data):
+    # 4. 查找节点（按 item_ID 查找）
+    def search(self, item_id):
         current = self.head
         while current:
-            if current.data == data:
-                return True
+            if current.data['item_ID'] == item_id:
+                return current.data
             current = current.next
-        return False
+        return None
