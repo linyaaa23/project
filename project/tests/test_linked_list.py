@@ -7,21 +7,20 @@ from data_structures.linked_list import LinkedList
 class TestLinkedList(unittest.TestCase):
     def setUp(self):
         self.ll = LinkedList()
-        self.ll.append(10)
-        self.ll.append(20)
-        self.ll.append(30)
+        self.item1 = {'item_ID': 1, 'name': 'Laptop'}
+        self.item2 = {'item_ID': 2, 'name': 'Mouse'}
+        self.ll.append(self.item1)
+        self.ll.append(self.item2)
 
     def test_append(self):
-        self.ll.append(40)
-        self.assertEqual(self.ll.search(40), True)
+        self.assertEqual(self.ll.search(1), self.item1)
 
     def test_delete(self):
-        self.ll.delete(20)
-        self.assertEqual(self.ll.search(20), False)
+        self.ll.delete(1)
+        self.assertEqual(self.ll.search(1), None)
 
-    def test_traverse(self):
-        # 简单验证输出（可优化为捕获打印内容断言）
-        self.ll.traverse()
+    def test_search(self):
+        self.assertEqual(self.ll.search(2)['name'], 'Mouse')
 
 if __name__ == '__main__':
     unittest.main()

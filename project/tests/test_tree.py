@@ -7,17 +7,19 @@ from data_structures.tree import BinaryTree
 class TestBinaryTree(unittest.TestCase):
     def setUp(self):
         self.bt = BinaryTree()
-        self.bt.insert(10)
-        self.bt.insert(20)
-        self.bt.insert(30)
+        self.bt.insert("ELECTRONICS")
+        self.bt.insert("FURNITURE")
+        self.bt.insert("CLOTHING")
 
     def test_insert(self):
-        self.bt.insert(40)
-        self.assertEqual(self.bt.search(40), True)
+        self.assertTrue(self.bt.search("FURNITURE"))
 
-    def test_preorder_traverse(self):
-        # 简单验证遍历逻辑（可优化断言）
-        self.bt.preorder_traverse(self.bt.root)
+    def test_search(self):
+        self.assertFalse(self.bt.search("BOOKS"))
+
+    def test_get_all_categories(self):
+        categories = self.bt.get_all_categories()
+        self.assertIn("ELECTRONICS", categories)
 
 if __name__ == '__main__':
     unittest.main()
